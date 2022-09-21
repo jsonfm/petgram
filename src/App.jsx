@@ -7,8 +7,8 @@ import  { GlobalStyle } from "@/styles/global";
 function App() {
   return (
     <div>
-        <Logo />
         <GlobalStyle />
+        <Logo />
         <ListOfCategories />
         <ListOfPhotoCards />
     </div>
