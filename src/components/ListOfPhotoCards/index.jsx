@@ -1,22 +1,11 @@
 import React from 'react';
+
+import { List } from "./styles";
 import { PhotoCard } from "@/components/PhotoCard";
+import { getPhotos } from "@/hooks/getPhotos";
 
-import { useQuery, gql } from "@apollo/client";
-const whitPhotos = gql`
-  query getPhotos {
-    photos {
-      id
-      categoryId
-      src
-      likes
-      userId
-      liked
-    }
-  }
-`;
-
-export const ListOfPhotoCards = () => {
-    const { loading, error, data } = useQuery(whitPhotos);
+export const ListOfPhotoCardsComponent = () => {
+    const { loading, error, data } = getPhotos();
 
     if (error) {
         return <h2>Internal Server Error</h2>;
@@ -25,12 +14,9 @@ export const ListOfPhotoCards = () => {
     if (loading) {
         return <h2>Loading...</h2>;
     }
-
-    console.log("data: ", data);
-
     return(
-        <ul>
-            {data && data.photos.map((image, id) => <PhotoCard key={image.id} id={image.id} src={image.src}/>)}
-        </ul>
+        <List>
+            {data && data.photos.map((image) => <PhotoCard key={image.id}  {...image}/>)}
+        </List>
     )
 }
