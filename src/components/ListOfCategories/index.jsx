@@ -2,7 +2,7 @@ import React from "react";
 import { Category } from "@/components/Category";
 import { List, Item } from "./styles";
 
-import { categories as mockCategories } from "@/api/db.json"
+import { categories as mockCategories } from "../../../api/db.json"
 
 
 export const ListOfCategories = () => {
