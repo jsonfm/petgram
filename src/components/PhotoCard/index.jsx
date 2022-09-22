@@ -1,21 +1,32 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocalStorage } from "@/hooks/useLocalStorage"
 import { useNearScreen } from "@/hooks/useNearScreen";
-import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
-import { ImgWrapper, Img, Button, Article } from "./styles";
+import { FavButton } from "@/components/FavButton";
+import { useMuationToogleLike } from "@/container/ToggleLikeMutation";
+
+import { ImgWrapper, Img, Article } from "./styles";
 
 
 const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1508280756091-9bdd7ef1f463?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'; 
 
 
 export const PhotoCard = ({ id = 1, likes = 0, src=DEFAULT_IMAGE}) => {
-    const [show, element] = useNearScreen();
     const key = `like-${id}`;
+    const [show, element] = useNearScreen();
     const [liked, setLiked] = useLocalStorage(key, false);
-    
+    const { mutation, mutationLoading, mutationError } = useMuationToogleLike();
 
 
-    const Icon = liked ? MdFavorite : MdFavoriteBorder;
+    const handleFavClick = () => {
+        !liked && mutation({
+            variables: {
+                input: { id }
+            }
+        })
+        setLiked(!liked)
+    };
+
+    console.log("mutation: ", { mutation, mutationLoading, mutationError });
 
     return(
         <Article ref={element}>
@@ -28,9 +39,7 @@ export const PhotoCard = ({ id = 1, likes = 0, src=DEFAULT_IMAGE}) => {
                     />
                 </ImgWrapper>
             </a>    
-            <Button onClick={() =>{setLiked(!liked)}}>
-                <Icon size='32px' /> {likes} likes!
-            </Button>   
+            <FavButton liked={liked} likes={likes} onClick={handleFavClick} />
             </>        
             }
         </Article>
