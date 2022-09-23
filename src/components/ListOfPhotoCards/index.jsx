@@ -2,6 +2,7 @@ import React from 'react';
 
 import { List } from "./styles";
 import { PhotoCard } from "@/components/PhotoCard";
+import { LoadingSpinner } from "@/components/LoadingSpinner";
 import { getPhotos } from "@/hooks/getPhotos";
 
 export const ListOfPhotoCardsComponent = () => {
@@ -12,7 +13,7 @@ export const ListOfPhotoCardsComponent = () => {
     }
 
     if (loading) {
-        return <h2>Loading...</h2>;
+        return <LoadingSpinner/>
     }
     return(
         <List>
