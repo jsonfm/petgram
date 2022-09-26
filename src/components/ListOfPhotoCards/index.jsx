@@ -1,12 +1,14 @@
 import React from 'react';
 
-import { List } from "./styles";
 import { PhotoCard } from "@/components/PhotoCard";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
 import { getPhotos } from "@/hooks/getPhotos";
 
-export const ListOfPhotoCardsComponent = () => {
-    const { loading, error, data } = getPhotos();
+import { List } from "./styles";
+
+export const ListOfPhotoCardsComponent = ({ categoryId }) => {
+    console.log("categoryId: ", categoryId);
+    const { loading, error, data } = getPhotos({ variables: { categoryId }});
 
     if (error) {
         return <h2>Internal Server Error</h2>;
