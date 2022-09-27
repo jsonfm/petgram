@@ -12,12 +12,11 @@ import { Favs } from "@/pages/favs";
 import { User } from "@/pages/user";
 import { NotRegisteredUser } from "@/pages/notRegisteredUser";
 
+
+import { Context } from "@/context";
+
+
 import  { GlobalStyle } from "@/styles/global";
-
-
-const UserLogged = ({ children }) => {
-    return children({ isAuth: false });
-}
 
 
 function App() {
@@ -34,7 +33,7 @@ function App() {
         <Route path="/detail/:id" element={<Detail/> } />
     </Routes>
 
-    <UserLogged>
+    <Context.Consumer>
         {
             ({ isAuth }) => (
                 isAuth
@@ -51,7 +50,7 @@ function App() {
 
             )
         }
-    </UserLogged>
+    </Context.Consumer>
     <Navbar />
     </>
   )
