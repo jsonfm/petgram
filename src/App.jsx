@@ -1,25 +1,57 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
+// Components
+import { Logo } from "@/components/Logo";
 import { Navbar } from "@/components/Navbar";
+
+// Pages
 import { Home } from "@/pages/home";
 import { Detail } from "@/pages/detail";
+import { Favs } from "@/pages/favs";
+import { User } from "@/pages/user";
+import { NotRegisteredUser } from "@/pages/notRegisteredUser";
 
 import  { GlobalStyle } from "@/styles/global";
+
+
+const UserLogged = ({ children }) => {
+    return children({ isAuth: false });
+}
+
 
 function App() {
   const urlParams = new window.URLSearchParams(window.location.search);
   const detailId = urlParams.get('detail');
-//   console.log("detailId: ", detailId);
 
   return (
     <>
     <GlobalStyle />
+    <Logo />
     <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pet/:categoryId" element={<Home />} />
         <Route path="/detail/:id" element={<Detail/> } />
     </Routes>
+
+    <UserLogged>
+        {
+            ({ isAuth }) => (
+                isAuth
+                ? 
+                <Routes>
+                    <Route path="/favs" element={<Favs />} />
+                    <Route path="/user" element={<User />} />
+                </Routes>
+                :
+                <Routes>
+                    <Route path="/favs" element={<NotRegisteredUser />} />
+                    <Route path="/user" element={<NotRegisteredUser />} />
+                </Routes>
+
+            )
+        }
+    </UserLogged>
     <Navbar />
     </>
   )
