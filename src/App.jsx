@@ -51,6 +51,7 @@ function App() {
             )
         }
     </Context.Consumer>
+    
     <Navbar />
     </>
   )

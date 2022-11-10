@@ -11,7 +11,7 @@ export const Input = styled.input`
     border: 1px solid #ccc;
     border-radius: 3px;
     margin-bottom: 0;
-    padding: 8px 4px;
+    padding: 8px 12px;
     display: block;
     width: 100%;
 `
@@ -24,8 +24,20 @@ export const Button = styled.button`
     display: block;
     width: 100%;
     text-align: center;
+    cursor: pointer;
 `
 
 export const FormContainer = styled.div`
     padding: 0 2rem;
 `
+
+export const Title = styled.h3`
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 0;
+`
+
+export const Error = styled.span`
+    font-size: 14px;
+    color: red;
+`;
