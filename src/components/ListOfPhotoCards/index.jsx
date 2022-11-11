@@ -7,7 +7,7 @@ import { getPhotos } from "@/hooks/getPhotos";
 import { List } from "./styles";
 
 export const ListOfPhotoCardsComponent = ({ categoryId }) => {
-    console.log("categoryId: ", categoryId);
+
     const { loading, error, data } = getPhotos({ variables: { categoryId }});
 
     if (error) {

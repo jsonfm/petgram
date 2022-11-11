@@ -1,5 +1,5 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useContext } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 // Components
 import { Logo } from "@/components/Logo";
@@ -22,6 +22,8 @@ import  { GlobalStyle } from "@/styles/global";
 function App() {
   const urlParams = new window.URLSearchParams(window.location.search);
   const detailId = urlParams.get('detail');
+  const { isAuth } = useContext(Context);
+
 
   return (
     <>
@@ -31,27 +33,19 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/pet/:categoryId" element={<Home />} />
         <Route path="/detail/:id" element={<Detail/> } />
-    </Routes>
 
-    <Context.Consumer>
-        {
-            ({ isAuth }) => (
-                isAuth
-                ? 
-                <Routes>
-                    <Route path="/favs" element={<Favs />} />
-                    <Route path="/user" element={<User />} />
-                </Routes>
-                :
-                <Routes>
-                    <Route path="/favs" element={<NotRegisteredUser />} />
-                    <Route path="/user" element={<NotRegisteredUser />} />
-                </Routes>
-
-            )
+        {!isAuth &&
+        <> 
+            <Route path="/login" element={<NotRegisteredUser />} />
+            <Route path="/favs" element={<Navigate to="/login" />}/>
+            <Route path="/user" element={<Navigate to="/login" />}/>
+        </>
         }
-    </Context.Consumer>
-    
+        {isAuth && <Route path="/login" element={<Navigate to="/" />}/>}
+        <Route path="/favs" element={<Favs />} />
+        <Route path="/user" element={<User />} />  
+    </Routes>   
+ 
     <Navbar />
     </>
   )

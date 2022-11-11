@@ -12,7 +12,11 @@ export const Provider = ({ children }) => {
     isAuth,
     activateAuth: (token) => {
       setIsAuth(true)
-      window.sessionStorage.setItem('token_petgram', token)
+      window.sessionStorage.setItem('token_petgram', token);
+    },
+    removeAuth: () => {
+        setIsAuth(false);
+        window.sessionStorage.removeItem('token_petgram');
     }
   }
 
