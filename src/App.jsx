@@ -20,7 +20,7 @@ import  { GlobalStyle } from "@/styles/global";
 
 
 const Favs = React.lazy(() => import("@/pages/favs"))
-console.log("favs: ---> ", Favs)
+
 
 function App() {
   const urlParams = new window.URLSearchParams(window.location.search);

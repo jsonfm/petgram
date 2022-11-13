@@ -2,6 +2,7 @@ import React from "react";
 import { PhotoCard } from "@/components/PhotoCard";
 import { getSinglePhoto } from "@/hooks/getPhoto";
 import { useParams } from "react-router-dom";
+import { PhotoCardSkeleton } from "@/skeletons/PhotoCardSkeleton";
 
 
 export const Detail = () => {
@@ -11,8 +12,9 @@ export const Detail = () => {
         return <div>Error</div>
 
     return (
-        <>
-        {data &&  <PhotoCard key={data.photo.id}  {...data.photo}/>}
-        </>
+        <div style={{padding: "0 1rem"}}>
+        {loading && <PhotoCardSkeleton /> }
+        {(!loading && data) &&  <PhotoCard key={data.photo.id}  {...data.photo}/>}
+        </div>
     )
 }

@@ -6,9 +6,9 @@ import { ListOfFavs } from "@/components/ListOfFavs";
 export default function Favs() {
     const { data } = useGetFavoritesPhotos();
     return (
-        <>
-        <h2>Favs Page</h2>
+        <div className="container">
+        <h3>Your Likes</h3>
         <ListOfFavs favs={data?.favs} />
-        </>
+        </div>
     )
 }

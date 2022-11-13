@@ -4,11 +4,7 @@ export const ListOfFavs = ({ favs }) => {
     if(!favs) return null;
     return (
         <Grid>
-            {favs.map(fav => (
-                <Image
-                    src={fav.src}
-                />
-            ))}
+            {favs.map(({ src }) => <Image src={src} />)}
         </Grid>
     )
 }

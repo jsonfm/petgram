@@ -40,5 +40,8 @@ export const GlobalStyle = createGlobalStyle`
                 overflow-x: hidden;
                 min-height: 100vh;
                 padding-bottom: 10px;
-        }          
+        }    
+        .container {
+          padding: 0 1rem;
+        }      
 `

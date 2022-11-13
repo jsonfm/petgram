@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
 export const List = styled.ul`
-    padding: 0 8px;
+    padding: 0 1rem;
 `

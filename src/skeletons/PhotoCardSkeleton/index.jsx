@@ -1,5 +1,5 @@
 import { Article, Shimmer } from "./styles";
-
+export { Shimmer };
 
 export const PhotoCardSkeleton = () => {
     return (
