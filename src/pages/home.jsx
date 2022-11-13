@@ -4,7 +4,7 @@ import { ListOfPhotoCardsComponent as ListOfPhotoCards } from "@/components/List
 import { useParams } from "react-router-dom";
 
 
-export const Home = () => {
+export const HomePage = () => {
     let { categoryId } = useParams();
 
     return (
@@ -15,3 +15,7 @@ export const Home = () => {
         </>
     )
 }
+
+export const Home = React.memo(HomePage, (prev, next) => {
+    return prev.categoryId !== next.categoryId
+})
