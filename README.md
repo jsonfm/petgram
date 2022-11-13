@@ -14,12 +14,17 @@ A social network for pets, which UI is inspired by instagram. This project uses 
 
 
 
-## Run
+### ⚡️ Development
 ```
 npm run dev
 ```
 
-## Server deployment
+### 📦 Frontend deployment
+```
+vercel
+```
+
+### 🚀 Backend deployment
 ```
 cd api
 
@@ -27,7 +32,7 @@ vercel
 ```
 
 
-## Technologies
+### 🧩 Technologies
 - React.js
 - Vite.js
 - Styled Components
