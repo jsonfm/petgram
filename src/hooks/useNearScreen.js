@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 
+// Checks if User is viewing the current element
 export function useNearScreen(){
   const [show, setShow] = useState(false);
   const element = useRef(null);
@@ -14,7 +15,6 @@ export function useNearScreen(){
     .then(() => {
         const observer = new window.IntersectionObserver((entries) => {
             const { isIntersecting } = entries[0];
-            console.log("intersecting: ", isIntersecting);
             if (isIntersecting) {
                 setShow(true);
                 observer.disconnect();
@@ -25,6 +25,5 @@ export function useNearScreen(){
   }, [element]);
 
   return [show, element];
-
 
 }

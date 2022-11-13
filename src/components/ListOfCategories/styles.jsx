@@ -8,6 +8,10 @@ export const List = styled.ul`
     width: 100%;
     margin-bottom: 20px;
 
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
     ${props => props.fixed && css`
     {
         ${fadeIn()}
