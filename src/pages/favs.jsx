@@ -3,7 +3,7 @@ import { useGetFavoritesPhotos } from "@/container/GetFavoritesPhotos";
 import { ListOfFavs } from "@/components/ListOfFavs";
 
 
-export const Favs = () => {
+export default function Favs() {
     const { data } = useGetFavoritesPhotos();
     return (
         <>

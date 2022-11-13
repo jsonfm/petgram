@@ -5,7 +5,7 @@ import { List, Item } from "./styles";
 import { categories as mockCategories } from "../../../api/db.json"
 
 
-export const ListOfCategories = () => {
+export const ListOfCategoriesComponent = () => {
     const [categories, setCategories] = React.useState(mockCategories);
     const [showFixed, setShowFixed] = React.useState(false);
 
@@ -33,3 +33,5 @@ export const ListOfCategories = () => {
         </>
     )
 }
+
+export const ListOfCategories = React.memo(ListOfCategoriesComponent)

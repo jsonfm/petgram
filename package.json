@@ -11,8 +11,10 @@
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "intersection-observer": "^0.12.2",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.4.1",
     "styled-components": "^5.3.5"
